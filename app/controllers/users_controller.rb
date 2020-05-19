@@ -30,6 +30,8 @@ class UsersController < ApplicationController
         #create new user and persist the new user to the db only if they meet the criteria
         if params[:name] != "" && params[:email] != "" && params[:password] != ""
             @user = User.create(params)
+            #log the user in
+            session[:user_id] = @user.id
             #redirect to user show page
             redirect :"/users/#{@user.id}"
         else
@@ -41,8 +43,12 @@ class UsersController < ApplicationController
     #user show route
     get '/users/:id' do 
         @user = User.find_by(id: params[:id])
-        
         erb :'/users/show'
+    end
+
+    get '/logout' do 
+        session.clear
+        redirect '/'
     end
 
 end
