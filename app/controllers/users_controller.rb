@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     post '/signup' do 
     end
 
+    #user show route
     get '/users/:id' do 
         #this will be the users show page
     end
