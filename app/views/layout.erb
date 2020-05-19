@@ -6,22 +6,35 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-
     <title>Wishlistar</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <div class="wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
 
+      <div class="navbar-brand">
+        <a class="navbar-item" href='/'>
+        <img src="star" alt="star img" />
+        </a>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/wishlists">Wishlists</a>
+          <a class="navbar-item" href="/account">My Profile</a>
+        </div>
+      </div>
+
+    </nav>
+</body>
         <%= yield %>
 
       <footer class="branding">
         <small>&copy; 2020 <strong>WishListar</strong></small>
       </footer>
-    </div>
+    
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!--[if lt IE 7]>

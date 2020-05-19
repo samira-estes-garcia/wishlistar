@@ -18,6 +18,7 @@ class UsersController < ApplicationController
         else
             #tell user they entered invalid credentials
             #redirect them to the login page
+            redirect '/login'
         end
     end
 
@@ -35,7 +36,8 @@ class UsersController < ApplicationController
             #redirect to user show page
             redirect :"/users/#{@user.id}"
         else
-            #not a valid input
+            #not a valid input, include message to user telling them what is wrong
+            redirect '/signup'
         end
         
     end
