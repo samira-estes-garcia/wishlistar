@@ -9,4 +9,5 @@ use Rack::MethodOverride
 
 # mount other controllers with use
 use UsersController
+use WishlistsController
 run ApplicationController

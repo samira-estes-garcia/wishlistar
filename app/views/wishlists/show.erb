@@ -1,0 +1,12 @@
+<p> <%=@wishlist.title %> Wishlist <a href="/wishlists/<%= @wishlist.id %>/edit">Edit</a> <a href="/wishlists/delete">Delete</a></p>
+
+Add Items to Your Wishlist!
+<form action="/items" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="name" />
+    <label for="link">Link</label>
+    <input type="text" name="link" />
+    <label for="image">Upload an Image</label>
+    <input type="text" name="image" />
+    <input type="submit" value="Add Item">
+</form>

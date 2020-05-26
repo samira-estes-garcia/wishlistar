@@ -9,32 +9,51 @@
     <title>Wishlistar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css" />
   </head>
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+  	<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
 
-      <div class="navbar-brand">
-        <a class="navbar-item" href='/'>
-        <img src="star" alt="star img" />
-        </a>
-      </div>
+	  <div class="navbar-brand">
+	    <a class="navbar-item" href="/">
+        <img src="/images/star.png" alt="Wishlistar">
+        WishListar
+      </a>
+	  </div>
 
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="/wishlists">Wishlists</a>
-          <a class="navbar-item" href="/account">My Profile</a>
-        </div>
-      </div>
+		  <div class="navbar-end">
+		  	<% if !logged_in? %>
+		    <a class="navbar-item" href='/login'>
+			  Login
+			</a>
+			<a class="navbar-item" href='/signup'>
+			  Sign Up
+			</a>
+      <% else %>
+      <a class="navbar-item" href='/wishlists'>
+			  My Wishlists
+			</a>
+			<a class="navbar-item" href="/">
+			  <strong><%=current_user.name%>'s Profile</strong>
+			</a>
+			<a class="navbar-item" href='/logout'>
+			  Logout
+			</a>
+			<% end %>
+		  </div>
+	  </div>
 
-    </nav>
-</body>
+  </nav>
+
+      <div class="flex-wrapper">
+      <div class="section is-medium">
         <%= yield %>
+
 
       <footer class="branding">
         <small>&copy; 2020 <strong>WishListar</strong></small>
       </footer>
-    
+      </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!--[if lt IE 7]>

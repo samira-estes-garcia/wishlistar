@@ -1,0 +1,8 @@
+Edit Wishlist Title
+
+<form action="/wishlists/<%= @wishlist.id %>" method="post">
+    <input type="hidden" name="_method" value="patch" />
+    <label for="title">Title</label>
+    <input type="text" name="title" value="<%=@wishlist.title%>" />
+    <input type="submit" value="Save" />
+</form>

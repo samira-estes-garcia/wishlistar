@@ -1,0 +1,10 @@
+<div class="is-flex">
+All Wishlists
+<a href="/wishlists/new"><img class="
+image is-16x16" src="../images/plus-sign-button.png" /></a> 
+</div>
+<% @wishlist.each do |wishlist| %>
+    <div class="is-capitalized">
+        <a href="/wishlists/<%= wishlist.id %>"><%= wishlist.title %> Wishlist</a>
+    </div>
+<% end %>
