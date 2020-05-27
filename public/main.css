@@ -94,6 +94,14 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
+  .add-space-right {
+    margin-right: 2%;
+  }
+
+  .add-space-top {
+    margin-top: 5%;
+  }
 }
 
 @media screen and (max-width: 600px) {

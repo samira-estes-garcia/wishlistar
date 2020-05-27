@@ -1,11 +1,45 @@
-<h2>Sign Up!</h2>
+<% if !!flash[:error] %>
+	<div class="notification is-danger">
+  		<h4><%= flash[:error] %></h4>
+  	</div>
+<% end %>
+
+<h2 class="has-text-centered remove-border">Sign Up!</h2>
 
 <form class="" action="/users" method="POST">
-    <label for="name">Name: </label>
-    <input type="text" name="name" value=""><br>
-    <label for="email">Email Address: </label>
-    <input type="text" name="email" value=""><br>
-    <label for="password">Password: </label>
-    <input type="password" name="password" value=""><br>
-    <input type="submit" value="Create User">
+    <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+            <input class="input" type="text" name="name" value="" placeholder="Name" required>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" name="email" placeholder="Email Address" value="" required>
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <p class="control has-icons-left">
+            <input class="input" type="password" name="password" value="" placeholder="Password" required>
+            <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+            </span>
+        </p>
+    </div>
+
+    <div class="field">
+        <p class="control">
+            <button class="button is-success" id="validate">Sign Up</button>
+        </p>
+    </div>
+
 </form>
+

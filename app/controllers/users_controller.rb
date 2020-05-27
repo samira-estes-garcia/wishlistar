@@ -17,6 +17,7 @@ class UsersController < ApplicationController
             redirect :"users/#{@user.id}"
         else
             #tell user they entered invalid credentials
+            flash.next[:error] = "Incorrect Email or Password. Please Try Again."
             #redirect them to the login page
             redirect '/login'
         end
@@ -28,24 +29,34 @@ class UsersController < ApplicationController
     end
 
     post '/users' do 
-        #create new user and persist the new user to the db only if they meet the criteria
-        if params[:name] != "" && params[:email] != "" && params[:password] != ""
-            @user = User.create(params)
-            #log the user in
-            session[:user_id] = @user.id
-            #redirect to user show page
-            redirect :"/users/#{@user.id}"
-        else
-            #not a valid input, include message to user telling them what is wrong
+        user = User.new(params)
+        #require unique email for all users
+        if User.all.any?{|user|user.email.downcase == params["email"].downcase}
+            flash.next[:error] = "Username or email is already associated with an account"
             redirect '/signup'
+        else
+        #create new user and persist the new user to the db only if they meet the criteria
+            if user.save
+                #log the user in
+                session[:user_id] = @user.id
+                #redirect to user show page
+                redirect :"/users/#{@user.id}"
+            else
+                #not a valid input, include message to user telling them what is wrong
+                flash.next[:error] = "Username, email, and password are required to create an account."
+                redirect '/signup'
+            end
         end
-        
     end
 
     #user show route
     get '/users/:id' do 
         @user = User.find_by(id: params[:id])
-        erb :'/users/show'
+        if @user == current_user
+            erb :'/users/show'
+        else
+            redirect :"/"
+        end
     end
 
     get '/logout' do 

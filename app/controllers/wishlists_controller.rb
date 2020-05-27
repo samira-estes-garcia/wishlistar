@@ -2,7 +2,11 @@ class WishlistsController < ApplicationController
 
     #create a form to create wishlists
     get '/wishlists/new' do
-        erb :"wishlists/new"
+        if !logged_in?
+            redirect '/'
+        else
+            erb :"wishlists/new"
+        end
     end
 
     #post request to create the wishlist
@@ -63,12 +67,22 @@ class WishlistsController < ApplicationController
         end
     end
 
-    #index page for all wishlists
-    get '/wishlists' do
-        @wishlist = Wishlist.all
-        erb :'wishlists/wishlists'
+    #delete wishlist
+    delete '/wishlists/:id' do
+        set_wishlist
+        if authorized?(@wishlist)
+            @wishlist.destroy
+            redirect '/wishlists' 
+        else
+            redirect '/wishlists'
+        end
     end
 
+    #index page for all wishlists
+    get '/wishlists' do
+        @wishlist = Wishlist.where(user_id: current_user.id)
+        erb :'wishlists/wishlists'
+    end
 
     #wishlist methods
     def set_wishlist 

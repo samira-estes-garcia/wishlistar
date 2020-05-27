@@ -1,7 +1,17 @@
-<h1>Create A New Wishlist<h1>
+<h2 class="has-text-centered remove-border">Create A New Wishlist</h2>
 
 <form action="/wishlists" method="POST">
-    <label for="title">Title</label><br>
-    <input type="text" name="title" value="" /> Wishlist
-    <input type="submit" value="Create Wishlist" />
+    <div class="field">
+        <label class="label">Title</label>
+        <div class="control">
+            <input class="input" type="text" name="title" value="" placeholder="Wishlist Title" required>
+        </div>
+        <p class="help">Enter a title for your wishlist!</p>
+    </div>
+    <button class="button is-success">
+        <span class="icon is-small">
+            <i class="fas fa-check"></i>
+        </span>
+        <span>Create</span>
+    </button>
 </form>
