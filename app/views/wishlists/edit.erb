@@ -1,6 +1,7 @@
 <h2 class="remove-border">Edit Wishlist Title</h2>
 
 <form action="/wishlists/<%= @wishlist.id %>" method="post">
+<input type="hidden" id="hidden" name="_method" value="patch"/>
     <div class="field">
         <div class="control">
             <input class="input" type="text" name="title" value="<%=@wishlist.title%>" required>

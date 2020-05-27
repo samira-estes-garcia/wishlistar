@@ -29,14 +29,14 @@ class UsersController < ApplicationController
     end
 
     post '/users' do 
-        user = User.new(params)
+        @user = User.new(params)
         #require unique email for all users
         if User.all.any?{|user|user.email.downcase == params["email"].downcase}
-            flash.next[:error] = "Username or email is already associated with an account"
+            flash.next[:error] = "This email is already associated with an account."
             redirect '/signup'
         else
         #create new user and persist the new user to the db only if they meet the criteria
-            if user.save
+            if @user.save
                 #log the user in
                 session[:user_id] = @user.id
                 #redirect to user show page
