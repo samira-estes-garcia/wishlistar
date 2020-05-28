@@ -13,3 +13,7 @@ Built using Ruby Sinatra, ActiveRecord, SQLite3, Bulma CSS framework
 - Run `bundle Install` to install all gem dependencies
 - Run all rake migrations with `rake db:migrate`
 - Start up a local server using `shotgun` and navigate to the provided url
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
