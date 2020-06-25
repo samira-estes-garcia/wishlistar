@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
 
-    #render the login page
+   #render the login page
     get '/login' do 
         erb :login
     end
 
     #receive login form, find the user, and log the user in (create session)
     post '/login' do 
-        #find the user
+         #find the user
         @user = User.find_by(email: params[:email])
-        #authenticate the user
+         #authenticate the user
         if @user.authenticate(params[:password])
             #log the user in - create the user session
             session[:user_id] = @user.id

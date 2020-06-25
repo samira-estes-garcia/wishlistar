@@ -80,7 +80,8 @@ class WishlistsController < ApplicationController
 
     #index page for all wishlists
     get '/wishlists' do
-        @wishlist = Wishlist.where(user_id: current_user.id)
+        @wishlist = current_user.wishlists
+        #@wishlist = Wishlist.where(user_id: current_user.id)
         erb :'wishlists/wishlists'
     end
 
