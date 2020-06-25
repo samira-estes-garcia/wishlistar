@@ -1,4 +1,4 @@
-<h2 class="remove-border">Edit Wishlist Title</h2>
+<h2 class="remove-border">Edit My Wishlist</h2>
 
 <form action="/wishlists/<%= @wishlist.id %>" method="post">
 <input type="hidden" id="hidden" name="_method" value="patch"/>
@@ -7,6 +7,10 @@
             <input class="input" type="text" name="title" value="<%=@wishlist.title%>" required>
         </div>
         <p class="help">Change the title for your wishlist!</p>
+        <div class="">
+            <textarea class="textarea" type="text" name="content"><%=@wishlist.content%></textarea>
+        </div>
+        <p class="help">Edit the items you want to include in your wishlist!</p>
     </div>
     <button class="button is-link">
         <span class="icon is-small">

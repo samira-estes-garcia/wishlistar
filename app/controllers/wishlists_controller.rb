@@ -15,7 +15,7 @@ class WishlistsController < ApplicationController
             redirect '/'
         end
         if params[:title] != ""
-            @wishlist = Wishlist.create(title: params[:title], user_id: current_user.id)
+            @wishlist = Wishlist.create(title: params[:title], user_id: current_user.id, content: params[:content])
             redirect :"/wishlists/#{@wishlist.id}"
         else
             redirect :"/wishlists/new"
@@ -57,7 +57,7 @@ class WishlistsController < ApplicationController
         #update the wishlist title
         if logged_in?
             if authorized?(@wishlist)
-                @wishlist.update(title: params[:title])
+                @wishlist.update(title: params[:title], content: params[:content])
                 redirect "/wishlists/#{@wishlist.id}"
             else
                 redirect "users/#{current_user.id}"

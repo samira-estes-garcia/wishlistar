@@ -1,10 +1,12 @@
-<h2 class="remove-border">You Created A New Wishlist!</h2>
-
-<div class="is-flex add-space-top">
-<h3 class="is-capitalized add-space-right"> <%=@wishlist.title %> </h3>
+<div class="is-flex">
+<h2 class="remove-border is-capitalized add-space-right"><%=@wishlist.title %></h2>
 <a href="/wishlists/<%= @wishlist.id %>/edit" class="add-space-right"><button class="button is-info">Edit</button></a> 
 <form class="" action ="/wishlists/<%= @wishlist.id %>" method="post">
     <input type="hidden" name="_method" value="DELETE"/>
     <button class="button is-danger">Delete</button>
 </form>
 </div>
+<h2 class="">My Items</h2>
+<div class="is-size-5"> <%= @wishlist.content %> </div>
+
+

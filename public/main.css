@@ -102,6 +102,10 @@
   .add-space-top {
     margin-top: 5%;
   }
+
+  .is-underlined {
+    text-decoration: underline;
+  }
 }
 
 @media screen and (max-width: 600px) {
